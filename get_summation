@@ -8,15 +8,3 @@ def get_summation(n):
         return 0                      # it is returning that it equals 0
     else:                             #if the input is anything else, it is returning the sum of the factorial 
         return n + get_summation(n-1) 
-
-
-
-def main():
-    
-    n = int(input("enter a number:")) #the input
-    
-    print(get_summation(n))           #calling the function
-    
-
-if __name__ == '__main__':
-    main()
