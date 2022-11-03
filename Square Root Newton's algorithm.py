@@ -1,4 +1,8 @@
 def get_square_root(n,p,e):                 #defining the function 
+'''
+author: Charlie
+bugs: none
+'''
     n = float(n)                            #making them all floats
     p = float(p)
     e = float(e)
