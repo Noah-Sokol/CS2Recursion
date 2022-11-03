@@ -1,0 +1,22 @@
+'''
+Created on Nov 2, 2022
+
+@author: DDrackett25
+'''
+def get_summation(n):
+    if n == 0:                        #saying that if the number inputed is equal to 0
+        return 0                      # it is returning that it equals 0
+    else:                             #if the input is anything else, it is returning the sum of the factorial 
+        return n + get_summation(n-1) 
+
+
+
+def main():
+    
+    n = int(input("enter a number:")) #the input
+    
+    print(get_summation(n))           #calling the function
+    
+
+if __name__ == '__main__':
+    main()
