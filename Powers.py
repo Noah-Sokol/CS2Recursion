@@ -1,12 +1,11 @@
+def get_powers(a,n):                                     #defining the get powers function
 '''
 author: Charlie
 bugs: none
 '''
-def get_powers(a,n):
-
-    n = int(n)
-    a = int(a)
-    if n==0:
-        return 1
-    else:
-        return a * get_powers(a,n-1)
+    n = int(n)                                           #making them ints
+    a = int(a)                                           #making them ints
+    if n==0:                                            #if statement
+        return 1                                         #returning 1 if equel to zero
+    else:                                               #else statement
+        return a * get_powers(a,n-1)                    # doing the power loop
