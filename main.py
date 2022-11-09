@@ -1,19 +1,20 @@
 '''
 Author - Noah Sokol
-Last Edited:11/3/22
+Last Edited:11/8/22
+Discription - runs functions using recursion
 '''
 
-def get_factorial(n):
+def get_factorial(n): # defining the function
     '''
-author: Charlie Jenkins
+author: Charlie
 bugs: none
 function: multiplys n by its factorials
 '''
     if n<0: return False
-    if n==0:
-        return 1
-    else:
-        return n * get_factorial(n-1)
+    if n==0:            # making an if statement 
+        return 1        # return 1 if true
+    else:           
+        return n * get_factorial(n-1)    # making factorial loop
 
 def get_summation(n):
     '''
@@ -27,40 +28,27 @@ Created on Nov 2, 2022
     else:                             #if the input is anything else, it is returning the sum of the factorial 
         return n + get_summation(n-1)
 
-def get_powers(a,n):
+def get_powers(a,n):                                     #defining the get powers function
     '''
-    author: Charlie Jenkins
-    bugs: none
-    '''
-    if n<0 or a<0: return False
-    if n==0:
-        return 1
-    else:
-        return a * get_powers(a,n-1)
-
-def get_fibonacci(n):
-    '''
-Created on Nov 3, 2022
-@author: DDrackett25
+author: Charlie
+bugs: none
 '''
-    if n<0: return False
-    if n == 0:
-        return 0
-    if n == 1:
-        return 1
-    else:
-        return get_fibonacci(n-1) + get_fibonacci(n-2)
+    if n<0 or a<0: return False
+    if n==0:                                            #if statement
+        return 1                                         #returning 1 if equel to zero
+    else:                                               #else statement
+        return a * get_powers(a,n-1)                    # doing the power loop
 
-def get_sum_of_numers_digits(n):
+def get_sum_of_numers_digits(n):  #defining the function
     '''
 author: Charlie
 bugs: none
 '''
     if n < 0: return False
-    if n<10:
-        return n
+    if n<10:                        #if statement true if n is less than 10
+        return n                    #returning the n if ture
     else:
-        return get_sum_of_numers_digits(n/10) + n%10
+        return get_sum_of_numers_digits(n/10) + n %10       #sum of numbers loop here (the % is the mod)
 
 def get_compound_interest_balance(p,r,t):
     '''
@@ -78,6 +66,19 @@ def get_compound_interest_balance(p,r,t):
         
     else: return (1 + r) * get_compound_interest_balance(p,r,t-1)
 
+def get_fibonacci(n):
+    '''
+    Created on Nov 3, 2022
+author: Deja
+'''
+    if n<0: return False
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    else:
+        return get_fibonacci(n-1) + get_fibonacci(n-2)
+
 def get_gcd(x,y):
     ''' 
     last updated 11/2/22
@@ -94,12 +95,16 @@ def get_gcd(x,y):
     else: 
         return get_gcd(y,x % y)
 
-def get_product_of_2_whole_numbers(a,b):
+def get_product_of_2_whole_numbers(a,b):      #defining function
+    '''
+author: Charlie
+bugs: none
+'''
     if a<0 or b<0: return False
-    if b > 0:
-        return a + get_product_of_2_whole_numbers(a,b-1)
+    if b > 0:                   #if statement
+        return a + get_product_of_2_whole_numbers(a,b-1)   # making a 2 whole numbers loop
     if b == 0:
-        return 0
+        return 0            #if true return 0
 
 def get_square_root(n,p,e):                 #defining the function 
     '''
@@ -114,31 +119,37 @@ bugs: none
         return get_square_root(n,p,(((e+n)/e)/2))     #doing the square root loop
 
 def main():
-    while True:
-        function_to_run = input('which function would you like to run ')
-        if function_to_run.split('-')[0] == 'fct':
-            output = get_factorial(int(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]))
-        elif function_to_run.split('-')[0] == 'pwr':
-            output = get_powers(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),float(function_to_run.split(',')[1]))
-        elif function_to_run.split('-')[0] == 'sum':
-            output = get_summation(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]))
-        elif function_to_run.split('-')[0] == 'fib':
-            output = get_fibonacci(int(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]))
-        elif function_to_run.split('-')[0] == 'snd':
-            output = get_sum_of_numers_digits(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]))
-        elif function_to_run.split('-')[0] == 'gcd':
-            output = get_gcd(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),float(function_to_run.split(',')[1]))
-        elif function_to_run.split('-')[0] == "pro":
-            output = get_product_of_2_whole_numbers(int(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),int(function_to_run.split(',')[1]))
-        elif function_to_run.split('-')[0] == "cib":
-            output = get_compound_interest_balance(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),float(function_to_run.split(',')[1]),float(function_to_run.split(',')[2]))
-        elif function_to_run.split('-')[0] == "sqr":
-            output = get_square_root(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),float(function_to_run.split(',')[1]),float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),float(function_to_run.split(',')[2]))
+    output = 'None'
+    try:
+        while True:
+            function_to_run = input('fct for factorial, pwr for powers, sum for summation, fib for fibonacci, snd for sum of number digits, gcd for gcd, pro for product of 2 numbers, cib for compund balance interest, sqr for square root then - for the parameters ')
+            if function_to_run.split('-')[0] == 'fct':
+                output = get_factorial(int(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]))
+            elif function_to_run.split('-')[0] == 'pwr':
+                output = get_powers(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),float(function_to_run.split(',')[1]))
+            elif function_to_run.split('-')[0] == 'sum':
+                output = get_summation(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]))
+            elif function_to_run.split('-')[0] == 'fib':
+                output = get_fibonacci(int(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]))
+            elif function_to_run.split('-')[0] == 'snd':
+                output = get_sum_of_numers_digits(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]))
+            elif function_to_run.split('-')[0] == 'gcd':
+                output = get_gcd(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),float(function_to_run.split(',')[1]))
+            elif function_to_run.split('-')[0] == "pro":
+                output = get_product_of_2_whole_numbers(int(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),int(function_to_run.split(',')[1]))
+            elif function_to_run.split('-')[0] == "cib":
+                output = get_compound_interest_balance(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),float(function_to_run.split(',')[1]),float(function_to_run.split(',')[2]))
+            elif function_to_run.split('-')[0] == "sqr":
+                output = get_square_root(float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),float(function_to_run.split(',')[1]),float(function_to_run.split(',')[0][len(function_to_run.split('-')[0])+1:]),float(function_to_run.split(',')[2]))
 
-        if output == False:  print('bad input please try again')
+            if output == False:  print('bad input please try again')
 
-        else: break
+            else: break
 
-    print(output)
+        print(output)
+    except IndexError: print('wrong number of paramaters entered')
+    except ValueError: print('Please enter numbers')
     
-main()
+
+while True:    
+    main()
